@@ -1,0 +1,193 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix focu: <http://focu.io/schema#> .
+@prefix focudata: <http://focu.io/data#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix schema: <http://schema.org/>.
+
+# RDF Schema for the University Vocabulary
+focu:University
+	a rdfs:Class ;
+    	rdfs:subClassOf foaf:Organization ;
+    	rdfs:label "University"@en;
+	rdfs:comment "An educational institution designed for instruction, examination,  or both, of students in many branches of advanced learning, conferring degrees in various faculties, and often embodying colleges and similar institutions."@en;
+	owl:sameAs dbpedia:University;
+    	rdfs:seeAlso dbpedia:University;
+    	owl:sameAs wd:Q3918;
+    	rdfs:seeAlso wd:Q3918 .
+
+# RDF Schema for the Course Vocabulary
+focu:Course
+	a rdfs:Class ;
+	rdfs:label "Course"@en;
+	rdfs:comment "a set of classes or a plan of study on a particular subject, usually leading to an exam or qualification."@en;
+	owl:sameAs schema:Course;
+	rdfs:seeAlso schema:Course;
+	owl:sameAs wd:Q600134;
+	rdfs:seeAlso wd:Q600134.
+
+focu:has_subject
+	a rdf:Property;
+	rdfs:label "Has subject"@en;
+	rdfs:comment "This term defines that a course has some kind of subjects."@en;
+	rdfs:domain focu:Course;
+	rdfs:range rdfs:Literal.
+
+focu:has_outline
+	a rdf:Property;
+	rdfs:label "Has outline"@en;
+	rdfs:comment "This term defines that a course has a outline."@en;
+	rdfs:domain focu:Course;
+	rdfs:range rdfs:Literal.
+
+focu:at_university
+	a rdf:Property;
+	rdfs:label "at university"@en;
+	rdfs:comment "This term defines that a course is taught at which school."@en;
+	rdfs:domain focu:Course;
+	rdfs:range focu:University.
+
+# RDF Schema for the Lecture Vocabulary
+focu:Lecture
+	a rdfs:Class ;
+	rdfs:label "Lecture"@en;
+	rdfs:comment "a series of lessons on a particular course."@en;	
+	owl:sameAs wd:Q603773;
+	rdfs:seeAlso wd:Q603773 .
+
+focu:in_course
+	a rdf:Property;
+	rdfs:label "in course"@en;
+	rdfs:comment "This term defines the lecture is introduced in the course."@en;
+	rdfs:domain focu:Lecture;
+	rdfs:range focu:Course.
+
+focu:lecture_number
+	a rdf:Property;
+	rdfs:label "lecture number"@en;
+	rdfs:comment "This term defines the sequential count of the lectures."@en;
+	rdfs:domain focu:Lecture;
+	rdfs:range rdfs:Literal.
+
+focu:lecture_name
+	a rdf:Property;
+	rdfs:label "lecture name"@en;
+	rdfs:comment "This term defines the name of the lectures."@en;
+	rdfs:domain focu:Lecture;
+	rdfs:range rdfs:Literal.
+
+focu:has_content
+	a rdf:Property;
+	rdfs:label "has content"@en;
+	rdfs:comment "This term defines the lecture has some kind of contents."@en;
+	rdfs:domain focu:Lecture;
+	rdfs:range focu:lecture_content.
+
+focu:lecture_content
+	a rdfs:Class;
+	rdfs:label "lecture content"@en;
+	rdfs:comment "This term defines the categories of lecture contents."@en;
+	focu:introduce focu:Topic .
+
+focu:introduce
+	a rdf:Property;
+	rdfs:label "introduced"@en ;
+	rdfs:comment "This term defines that lecture content introduce topics."@en ;
+	rdfs:domain focu:lecture_content ;
+	rdfs:range focu:Topic .
+
+focu:slides
+	a rdfs:Class;
+	rdfs:subClassOf focu:lecture_content;
+	rdfs:label "slides"@en;
+	rdfs:comment "This term defines the slide category of lectures."@en.
+
+focu:worksheets
+	a rdfs:Class;
+	rdfs:subClassOf focu:lecture_content;
+	rdfs:label "worksheets"@en;
+	rdfs:comment "This term defines the worksheet category of lectures."@en.
+
+focu:labs
+	a rdfs:Class;
+	rdfs:subClassOf focu:lecture_content;
+	rdfs:label "labs"@en;
+	rdfs:comment "This term defines the lab category of lectures."@en.
+
+focu:readings
+	a rdfs:Class;
+	rdfs:subClassOf focu:lecture_content;
+	rdfs:label "readings"@en;
+	rdfs:comment "This term defines the reading category of lectures."@en.
+
+focu:materials
+	a rdfs:Class;
+	rdfs:subClassOf focu:lecture_content;
+	rdfs:label "Additional materials"@en;
+	rdfs:comment "This term defines the additional material category of lectures."@en.
+
+# RDF Schema for the Students Vocabulary
+focu:Student
+	a rdfs:Class ;
+	rdfs:subClassOf foaf:Person ;
+	rdfs:label "Student"@en;
+	rdfs:comment "a person who studies in a school or organization"@en .
+
+focu:studies_at
+  	a rdf:Property ;
+  	rdfs:label "studies at"@en ;
+  	rdfs:comment "This term defines that a student studies at a university" ;
+  	rdfs:domain focu:Student ;
+  	rdfs:range focu:University .
+
+focu:studentId
+	a rdf:Property ;
+	rdfs:label "student id"@en ;
+	rdfs:comment "The student ID of the university."@en ;
+	rdfs:domain focu:Student ;
+	rdfs:range rdfs:Literal .
+
+focu:has_taken
+  	a rdf:Property ;
+  	rdfs:label "has taken"@en ;
+  	rdfs:comment "This term defines that a student has taken a course" ;
+  	rdfs:domain focu:Student ;
+  	rdfs:range focu:Course_Taken .
+
+focu:Course_Taken
+	a rdfs:Class ;
+	rdfs:label "course taken"@en;
+	rdfs:comment "the course students has taken."@en.
+
+focu:has_grade
+  	a rdf:Property ;
+  	rdfs:label "has grade for"@en ;
+  	rdfs:comment "the grade student get for a course" ;
+  	rdfs:domain focu:Course_Taken ;
+  	rdfs:range rdfs:Literal .
+
+focu:is_course
+  	a rdf:Property ;
+  	rdfs:label "is course"@en ;
+  	rdfs:comment "link to a course" ;
+  	rdfs:domain focu:Course_Taken ;
+  	rdfs:range focu:Course .
+
+focu:in_semester
+  	a rdf:Property ;
+  	rdfs:label "in semester"@en ;
+  	rdfs:comment "the course is taken in which semester" ;
+  	rdfs:domain focu:Course_Taken ;
+  	rdfs:range rdfs:Literal .
+
+#Topic
+focu:Topic
+	a rdfs:Class ;
+	rdfs:label "Topic"@en;
+	rdfs:comment "information about the topics that are covered in a course"@en .

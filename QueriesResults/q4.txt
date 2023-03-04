@@ -1,0 +1,14 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX owl: <http://www.w3.org/2002/07/owl#>
+            PREFIX schema: <http://schema.org/>
+            SELECT ?label ?link
+            WHERE {
+              ?course focu:has_subject "COMP".
+              ?course schema:courseCode "6741".
+              ?lecture focu:in_course ?course.
+              ?lecture focu:introduce ?topic.
+              ?topic rdfs:label ?label.
+              ?topic owl:sameAs ?link.
+            }

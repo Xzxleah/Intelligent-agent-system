@@ -1,0 +1,18 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX owl: <http://www.w3.org/2002/07/owl#>
+            SELECT DISTINCT ?label ?link
+            WHERE {
+              ?student foaf:givenName "Bo"@en.
+              ?student foaf:familyName "Wang"@en.
+              ?student focu:has_taken ?course_take.
+              ?course_take focu:is_course ?course.
+              ?course_take focu:has_grade ?grade.
+              ?lecture focu:in_course ?course.
+              ?lecture focu:introduce ?topic.
+              ?topic rdfs:label ?label.
+              ?topic owl:sameAs ?link.
+              FILTER (?grade = "A" || ?grade = "A+" || ?grade = "A-" || ?grade = "B" || ?grade = "B+" || ?grade = "B-" || ?grade = "C" || ?grade = "C+") . 
+            }

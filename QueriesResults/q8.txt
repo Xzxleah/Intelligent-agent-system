@@ -1,0 +1,9 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX schema: <http://schema.org/>
+            SELECT (count(?lecture) as ?total)
+            WHERE {
+              ?course focu:has_subject "COMP".
+              ?course schema:courseCode "6741".
+              ?lecture focu:in_course ?course.
+            }

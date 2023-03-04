@@ -1,0 +1,330 @@
+version: "3.1"
+
+nlu:
+- intent: about_course
+  examples: |
+    - What is the [Comp](course_subject) [6721](course_code) about?
+    - What is the [COMP](course_subject) [6741](course_code) about?
+    - What is the [comp](course_subject) [6741](course_code) about?
+    - What is course [COMP](course_subject) [6721](course_code) about?
+    - Tell me about [comp](course_subject) [6721](course_code)
+    - Tell me about course [COMP](course_subject) [6721](course_code)
+    - Can you tell me about [Comp](course_subject) [6721](course_code)?
+    - Can you tell me about course [comp](course_subject) [6721](course_code)?
+    - What is the [COMP](course_subject) [6741](course_code) about?
+    - What is course [COMP](course_subject) [6741](course_code) about?
+    - Tell me about [COMP](course_subject) [6741](course_code)
+    - Tell me about course [COMP](course_subject) [6741](course_code)
+    - Can you tell me about [COMP](course_subject) [6741](course_code)?
+    - Can you tell me about course [COMP](course_subject) [6741](course_code)?
+    - What is the [_oov_](course_subject) [_oov_](course_code) about?
+    - What is course [_oov_](course_subject) [_oov_](course_code) about?
+    - Tell me about [_oov_](course_subject) [_oov_](course_code)
+    - Tell me about course [_oov_](course_subject) [_oov_](course_code)
+    - Can you tell me about [_oov_](course_subject) [_oov_](course_code)?
+    - Can you tell me about course [_oov_](course_subject) [_oov_](course_code)?
+
+- intent: student_competency
+  examples: |
+    - which topics is [Tom White](student) competent in
+    - which topics is [Bo Wang](student) competent in?
+    - which topics is [zach willam](student) competent in
+    - which topics is [Tom](student) competent in?
+    - which topics is [Jerry Black](student) competent in
+    - which topics is [Logan parker](student) competent in?
+    - which topics is [jane Smith](student) competent in?
+    - which topics is [apple sun](student) competent in
+    - which topics is [_oov_](student) competent in?
+    - which topics is [_oov_](student) competent in
+    - which topics does [Logan parker](student) know about?
+    - which topics does [jane Smith](student) know about?
+    - which topics does [Bo Wang](student) know about?
+    - which topics does [Tom White](student) know about?
+    - which topics does [zach](student) know about?
+    - which topics does [Tom](student) know about?
+    - which topics does [apple sun](student) know about?
+    - which topics does [_oov_](student) know about?
+    - which topics does [_oov_](student) know about
+
+- intent: course_from_topic
+  examples: |
+    - which course teaches [knowledge graph](topic)?
+    - which course teaches [heuristic](topic)?
+    - which course teaches [ANN](topic)?
+    - which course teaches [Alpha–beta pruning](topic)?
+    - which course teaches [Artificial Neural Networks](topic)
+    - which course teaches [Artificial intelligence](topic)?
+    - which course teaches [DFS](topic)?
+    - which course teaches [Neural network](topic)
+    - which course teaches [Sentiment analysis](topic)?
+    - which course teaches [_oov_](topic)?
+    - which course teaches [_oov_](topic)
+    - which course covers [knowledge graph](topic)?
+    - which course covers [heuristic](topic)
+    - which course covers [ANN](topic)?
+    - which course covers [Alpha–beta pruning](topic)
+    - which course covers [Artificial Neural Networks](topic)
+    - which course covers [Artificial intelligence](topic)?
+    - which course covers [DFS](topic)?
+    - which course covers [Neural network](topic)?
+    - which course covers [Sentiment analysis](topic)?
+    - which course covers [_oov_](topic)?
+    - which course covers [_oov_](topic)
+    - if I want to learn [knowledge graph](topic), which course should I take?
+    - if I want to learn [heuristic](topic), which course should I take?
+    - if I want to learn [ANN](topic), which course should I take?
+    - if I want to learn [Alpha–beta pruning](topic), which course should I take?
+    - if I want to learn [Artificial Neural Networks](topic), which course should I take?
+    - if I want to learn [DFS](topic), which course should I take?
+    - if I want to learn [Neural network](topic), which course should I take?
+    - if I want to learn [Sentiment analysis](topic), which course should I take?
+    - if I want to learn [_oov_](topic), which course should I take?
+    - if I want to learn [_oov_](topic), which course should I take
+
+- intent: content_from_topic
+  examples: |
+    - Can you list all related course content for [knowledge graph](topic)?
+    - Can you list all related course content for [ANN](topic)?
+    - Can you list all related course content for [heuristic](topic)?
+    - Can you list all related course content for [Alpha–beta pruning](topic)?
+    - Can you list all related course content for [DFS](topic)?
+    - Can you list all related course content for [Neural network](topic)?
+    - Can you list all related course content for [_oov_](topic)?
+
+- intent: topic_from_course
+  examples: |
+    - which topics are covered in [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Comp](course_subject) [6741](course_code)?
+    - which topics are covered in [_oov_](course_subject) [_oov_](course_code)?
+    - which topics can I learn from [COMP](course_subject) [6721](course_code)?
+    - which topics can I learn from [Comp](course_subject) [6741](course_code)?
+    - which topics can I learn from [_oov_](course_subject) [_oov_](course_code)?
+    - what can I learn from [COMP](course_subject) [6721](course_code)?
+    - what can I learn from [Comp](course_subject) [6741](course_code)?
+    - what can I learn from [_oov_](course_subject) [_oov_](course_code)?
+    - what topics can I learn from [COMP](course_subject) [6721](course_code)?
+    - what topics can I learn from [Comp](course_subject) [6741](course_code)?
+    - what topics can I learn from [_oov_](course_subject) [_oov_](course_code)?
+
+- intent: student_email
+  examples: |
+    - what is [Bo Wang](student)’s Email?
+    - what is [zach](student)’s Email?
+    - what is [apple sun](student)’s Email?
+    - what is [Jerry Black](student)’s Email?
+    - what is [Logan parker](student)’s Email?
+    - what is [jane Smith](student)’s Email?
+    - what is [_oov_](student)’s Email?
+    - Do you know [Bo Wang](student)’s Email?
+    - Do you know [zach](student)’s Email?
+    - Do you know [apple sun](student)’s Email?
+    - Do you know [Jerry Black](student)’s Email?
+    - Do you know [Logan parker](student)’s Email?
+    - Do you know [jane Smith](student)’s Email?
+    - Do you know [_oov_](student)’s Email?
+    - Can you tell me [Bo Wang](student)’s Email?
+    - Can you tell me [jane Smith](student)’s Email?
+    - Can you tell me [apple sun](student)’s Email?
+    - Can you tell me [Jerry Black](student)’s Email?
+    - Can you tell me [Logan parker](student)’s Email?
+    - Can you tell me [jane Smith](student)’s Email?
+    - Can you tell me [_oov_](student)’s Email?
+
+- intent: course_reading
+  examples: |
+    - what are the suggested readings for [COMP](course_subject) [6741](course_code)?
+    - what are the suggested readings for [Comp](course_subject) [6721](course_code)?
+    - what are the suggested readings for [_oov_](course_subject) [_oov_](course_code)?
+    - is there any suggested readings for [COMP](course_subject) [6741](course_code)?
+    - is there any suggested readings for [Comp](course_subject) [6721](course_code)?
+    - is there any suggested readings for [_oov_](course_subject) [_oov_](course_code)?
+    - what do you suggest to read for [COMP](course_subject) [6741](course_code)?
+    - what do you suggest to read for [Comp](course_subject) [6721](course_code)?
+    - what do you suggest to read for [_oov_](course_subject) [_oov_](course_code)?
+
+- intent: course_lecture_count
+  examples: |
+    - how many lectures are in [COMP](course_subject) [6741](course_code)?
+    - how many lectures are in [COMP](course_subject) [6721](course_code)?
+    - how many lectures are in [_oov_](course_subject) [_oov_](course_code)?
+    - how many lectures should I take for [COMP](course_subject) [6741](course_code)?
+    - how many lectures should I take for [COMP](course_subject) [6721](course_code)?
+    - how many lectures should I take for [_oov_](course_subject) [_oov_](course_code)?
+
+- intent: student_credit
+  examples: |
+    - how many credits [Bo Wang](student) gained at [Concordia](university) ?
+    - how many credits [Bo Wang](student) gained at [Concordia](university) University?
+    - how many credits [Logan parker](student) gained at [Concordia](university) ?
+    - how many credits [Logan parker](student) gained at [Concordia](university) University?
+    - how many credits [jane Smith](student) gained at [Concordia](university) ?
+    - how many credits [jane Smith](student) gained at [Concordia](university) University?
+    - how many credits [apple sun](student) gained at [Concordia](university) ?
+    - how many credits [apple sun](student) gained at [Concordia](university) University?
+    - how many credits [zach miller](student) gained at [Concordia](university) ?
+    - how many credits [zach miller](student) gained at [Concordia](university) University?
+    - how many credits [_oov_](student) gained at [_oov_](university) ?
+    - how many credits [_oov_](student) gained at [_oov_](university) University?
+
+- intent: student_attend
+  examples: |
+    - how many courses did [Bo Wang](student) attend at [Concordia](university) ?
+    - how many courses did [Bo Wang](student) attend at [Concordia](university) University?
+    - how many courses did [Logan parker](student) attend at [Concordia](university) ?
+    - how many courses did [Logan parker](student) attend at [Concordia](university) University?
+    - how many courses did [jane Smith](student) attend at [Concordia](university) ?
+    - how many courses did [jane Smith](student) attend at [Concordia](university) University?
+    - how many courses did [apple sun](student) attend at [Concordia](university) ?
+    - how many courses did [apple sun](student) attend at [Concordia](university) University?
+    - how many courses did [zach miller](student) attend at [Concordia](university) ?
+    - how many courses did [zach miller](student) attend at [Concordia](university) University?
+    - how many courses did [_oov_](student) attend at [_oov_](university) ?
+    - how many courses did [_oov_](student) attend at [_oov_](university) University?
+
+- intent: course_credit
+  examples: |
+    - how many credits is course [COMP](course_subject) [6741](course_code) worth?
+    - how many credits is course [Comp](course_subject) [6721](course_code) worth?
+    - how many credits is course [_oov_](course_subject) [_oov_](course_code) worth?
+    - how many credits is [COMP](course_subject) [6741](course_code) worth?
+    - how many credits is [Comp](course_subject) [6721](course_code) worth?
+    - how many credits is [_oov_](course_subject) [_oov_](course_code) worth?
+
+- intent: topic_from_content
+  examples: |
+    - which topics are covered in [Lab #3](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Lab 03](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Lab03](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Lab #2](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Lab 02](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Lab02](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Slide #2](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Slide 02](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Slide02](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Worksheet #2](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Worksheet 02](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Worksheet02](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Slide #3](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Slide 03](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Slide03](content) of [COMP](course_subject) [6724](course_code)?
+    - which topics are covered in [Worksheet #3](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Worksheet 03](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Worksheet03](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Lab #10](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Lab 10](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Lab10](content) of [COMP](course_subject) [6721](course_code)?
+    - which topics are covered in [Lab #11](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Lab 11](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [Lab11](content) of [COMP](course_subject) [6741](course_code)?
+    - which topics are covered in [_oov_](content) of [_oov_](course_subject) [_oov_](course_code)?
+
+- intent: course_total
+  examples: |
+    - how many courses in total?
+    - how many courses here ?
+    - in total, how many courses here?
+    - how many courses in the graph?
+
+- intent: total_triple
+  examples: |
+    - how many triples in total?
+    - how many triples here ?
+    - in total, how many triples here?
+    - how many triples in the graph?
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Can I graduate?
+    - what are you doing now?
+    - which university is the best?

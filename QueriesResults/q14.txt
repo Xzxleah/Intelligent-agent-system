@@ -1,0 +1,7 @@
+
+                SELECT (Count(?s) as ?total)
+                WHERE {
+                SELECT DISTINCT ?s ?p ?o
+                WHERE {
+                  ?s ?p ?o.
+                }}

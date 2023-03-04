@@ -1,0 +1,13 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT (Count(?course) as ?total)
+            WHERE {
+              ?uni rdfs:label "Concordia University"@en.
+              ?student foaf:givenName "Bo"@en.
+              ?student foaf:familyName "Wang"@en.
+              ?student focu:has_taken ?course_take.
+              ?course_take focu:is_course ?course.
+              ?course focu:at_university ?uni.
+            }

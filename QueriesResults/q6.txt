@@ -1,0 +1,13 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX schema: <http://schema.org/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT ?link
+            WHERE {
+              ?course focu:has_subject "COMP".
+              ?course schema:courseCode "6741".
+              ?lecture focu:in_course ?course.
+              ?lecture focu:has_content ?reading.
+              ?reading a focu:readings.
+              ?reading rdfs:seeAlso ?link.
+            }

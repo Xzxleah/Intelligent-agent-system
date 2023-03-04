@@ -1,0 +1,18 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX owl: <http://www.w3.org/2002/07/owl#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX schema: <http://schema.org/>
+            SELECT DISTINCT ?topic_label ?course_subject ?course_code ?lecture_number ?content_label ?link
+            WHERE {
+              ?course focu:has_subject ?course_subject.
+              ?course schema:courseCode ?course_code.
+              ?lecture focu:in_course ?course.
+  			  ?lecture focu:lecture_number ?lecture_number.	
+              ?lecture focu:has_content ?content.
+  			  optional {?content rdfs:label ?content_label .}.
+              ?content focu:introduce ?topic.
+              ?content owl:sameAs|rdfs:seeAlso ?link.
+              ?topic rdfs:label ?topic_label.
+              FILTER (lcase(str(?topic_label)) = "knowledge graph").
+            }

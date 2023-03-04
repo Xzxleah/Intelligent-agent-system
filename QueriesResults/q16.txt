@@ -1,0 +1,6 @@
+
+                PREFIX focu: <http://focu.io/schema#>
+                SELECT (Count(?s) as ?total)
+                WHERE {
+                  ?s a focu:Topic.
+                }

@@ -1,0 +1,13 @@
+
+            PREFIX focu: <http://focu.io/schema#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX schema: <http://schema.org/>
+            SELECT ?name
+            WHERE {
+              ?uni rdfs:label "Concordia University"@en.  
+              ?course focu:at_university ?uni.  
+              ?course schema:name ?name.
+              ?lecture focu:in_course ?course.
+              ?lecture focu:introduce ?topic.
+              ?topic rdfs:label "Knowledge Graph".
+            }
